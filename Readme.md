@@ -27,12 +27,12 @@ pip install --upgrade pip
 make init
 ```
 #### Run the tests:
-- from <PROJECT-ROOT> folder:
+- from `PROJECT-ROOT` folder:
 ```
 cd <PROJECT-ROOT>
 make tests
 ```
-- from <PACKAGE-DIR> folder:
+- from `PACKAGE-DIR` folder:
 ```
 cd <PACKAGE-DIR>
 pytest
@@ -48,12 +48,12 @@ Notice:
 ```bash
 sudo apt install default-jdk # or default-jre to save docker image size
 ```
-If you do not know the JAVA_HOME path, you can type:
+If you do not know the `JAVA_HOME` path, you can type:
 ```bash
 update-alternatives --config java
 ```` 
-And you should find the full java path from output but use it without /bin/java posix as `<PATH>` in next example.
-- Set the JAVA_HOME variable in file `/etc/environment` by command:
+And you should find the full java path from output but use it without `/bin/java` posix as `<PATH>` in next example
+- Set the `JAVA_HOME` variable in file `/etc/environment` by command:
 ```bash
 sudoedit /etc/environment
 ```
@@ -65,12 +65,12 @@ Example (generic): `JAVA_HOME="/lib/jvm/default-java"`
 
 Notice there's no space when declaring the variable, double quotes and NO `/bin/java` at the end of `<PATH>`
 
-Save changes in file `/etc/environment` (In case nano editor: CTRL+X -> Yes -> Enter)
+Save changes in file `/etc/environment` (In case `nano` editor: CTRL+X -> Yes -> Enter)
 
-Restart your shell  + .venv for changes to take effect for all future sessions:
-- Option 1 (preferable) - close PyCharm and logoff/logon Ubuntu
-- Option 2 (fuzzy and not really clear how it works with PyCharm):
-- - reset environment - this only works for the current bash session where you run it, not the .venv inside this session
+Restart your `shell`  + `.venv` for changes to take effect in all future sessions:
+- option 1 (preferable) - close PyCharm and logoff/logon Ubuntu
+- option 2 (fuzzy and not really clear how it works with PyCharm):
+- - reset `shell` environment - this only works for the current bash session where you run it, not the .venv inside this session
 ```bash
 . /etc/environment
 ```
@@ -78,7 +78,7 @@ Restart your shell  + .venv for changes to take effect for all future sessions:
 ```bash
 echo $JAVA_HOME
 ```
-- - reset .venv:
+- - reset `.venv`:
 ```bash
 sudo su - $USER
 cd <PROJECT-ROOT>
@@ -90,7 +90,7 @@ source .venv/bin/activate
 make init
 ```
 #### Run the tests + allure report
-from <PROJECT-ROOT>
+from `PROJECT-ROOT`
 - option 1:
 ```
 cd <PROJECT-ROOT>
@@ -102,15 +102,15 @@ sh scripts/start_tests_allure.sh
 ```
 ## Docker
 Build options:
-- Use the Docker command line (for manual test):
+- use the Docker CLI (for manual test):
 
-In the command, the -t flag tags your image with a name and the `.` lets Docker knows where it can find the Dockerfile.
+In the command, the -t flag tags your image with a name and the `.` lets Docker knows where it can find the Dockerfile
 ```bash
 docker build -t page_object_playwright:1.0.1 . # create image from Dockerfile
 docker run --name manual_run page_object_playwright:1.0 # create container from image
 docker start manual_run -i # rerun existing container (interactive)
 ```
-- Build containers in a pipeline (with network interface):
+- build & run containers in a CI pipeline:
 ```bash
 docker compose up -d 
 docker run page_object_playwright-autotest:latest
@@ -128,7 +128,7 @@ Docker container operations:
 ```bash
 docker ps -a # list all containers
 docker rm -f <container ID_or_NAME> # remove container by ID or name
-docker run  -it -d <image ID_or_NAME:TAG> /bin/bash # leave container running
+docker run  -it -d <image ID_or_NAME:TAG> /bin/bash # force leave container running
 docker exec -it <container_ID_or_NAME> /bin/bash # enter container shell
 pytest # start tests inside container
 exit # exit container
@@ -143,15 +143,13 @@ docker system prune -a # clear all docker subsystem (except running containers)
 
 - Allure server warning at launch time:
 `MESA-INTEL: warning: Performance support disabled, consider sysctl dev.i915.perf_stream_paranoid=0`
-
-Solution:
+- - Solution:
 https://forum.manjaro.org/t/cant-change-dev-i915-perf-stream-paranoid-to-0/66339/9
-
-Check actual status with command:
+- - Check actual status with command:
 ```bash
 sysctl -n dev.i915.perf_stream_paranoid
 ```
-Change parameter:
+- - Change parameter:
 ```bash
 sudo sysctl dev.i915.perf_stream_paranoid=0
 ```
