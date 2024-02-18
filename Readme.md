@@ -8,8 +8,8 @@
 #### Install IDE PyCharm CE on local PC
 - Community Edition is enough
 #### Download or clone autotests repository:
-- via HTTPS
-- via SSH
+- via HTTPS: https://github.com/sarzamas/pytest_PageObjectPlaywright_example
+- via SSH: git@github.com:sarzamas/pytest_PageObjectPlaywright_example.git
 #### Set branch `dev` as default for merge requests:
 ```bash
 git push --set-upstream origin dev
