@@ -1,0 +1,12 @@
+name: page_object_playwright
+services:
+  autotest:
+    environment:
+      - COMPOSE_PROJECT_NAME
+      - COMPOSE_SERVICE_NAME
+    build:
+      context: ./ # Either a path to a directory containing a Dockerfile, or an url to a git repository.
+      args:
+        buildno: 1
+    image: $COMPOSE_PROJECT_NAME:latest
+    container_name: $COMPOSE_SERVICE_NAME

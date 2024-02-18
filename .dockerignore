@@ -1,0 +1,50 @@
+# Temporary files
+**/__pycache__
+**/.pytest_cache
+**/__MACOSX
+**/.DS_Store
+
+# IDE files
+.idea
+.vscode
+
+# Git files
+*git/
+.gitignore
+
+# Docker files
+Dockerfile*
+.dockerignore
+*.yaml
+
+# Scripts
+scripts
+Makefile
+
+# Environment
+*venv/
+*devenv/
+*.exe
+state.json
+requirements_freeze.txt
+
+# Config
+**/config.local.json
+**/*backup*
+
+# Other files
+share/
+DOC/
+temp/
+TMP/
+samples/
+allure/
+allure_results/
+video/
+screenshots/
+Logs/
+logs/
+*.log
+*.tar
+*.md
+git.txt
