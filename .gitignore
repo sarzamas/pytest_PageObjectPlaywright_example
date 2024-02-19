@@ -18,6 +18,7 @@ poetry.lock*
 
 # Config
 config.local.json
+.env.local
 *backup*
 
 # Other files
