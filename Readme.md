@@ -112,7 +112,8 @@ docker start manual_run -i # rerun existing container (interactive)
 ```
 - build & run containers in a CI pipeline:
 ```bash
-docker compose up -d 
+docker compose config # show `docker-compose.yaml` file with evaluated params
+docker compose up -d # build and run app
 docker run page_object_playwright-autotest:latest
 docker start manual_run -i # rerun existing container (interactive)
 ```
