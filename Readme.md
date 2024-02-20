@@ -102,7 +102,7 @@ sh scripts/start_tests_allure.sh
 ```
 ## Docker
 Build options:
-- use the Docker CLI (for manual test):
+- use the Docker CLI (for manual test with local host network):
 
 In the command, the -t flag tags your image with a name and the `.` lets Docker knows where it can find the Dockerfile
 ```bash
@@ -110,12 +110,11 @@ docker build -t page_object_playwright:1.0.1 . # create image from Dockerfile
 docker run --name manual_run page_object_playwright:1.0 # create container from image
 docker start manual_run -i # rerun existing container (interactive)
 ```
-- build & run containers in a CI pipeline:
+- build & run several containers in a CI pipeline (with docker0 bridge network):
 ```bash
-docker compose config # show `docker-compose.yaml` file with evaluated params
-docker compose up -d # build and run app
-docker run page_object_playwright-autotest:latest
-docker start manual_run -i # rerun existing container (interactive)
+docker compose config # show `compose.yaml` file with interpolated params
+docker compose up -d # build and run `compose.yaml`
+docker start autotests -i # rerun existing container (interactive)
 ```
 Docker images operations:
 ```bash
